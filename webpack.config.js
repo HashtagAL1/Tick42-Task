@@ -1,4 +1,5 @@
 const path = require("path");
+const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssWebpackPlugin = require('mini-css-extract-plugin')
 
@@ -43,6 +44,9 @@ module.exports = {
         new HtmlWebpackPlugin({
             template: path.join(__dirname, "src", "index.html")
         }),
-        new MiniCssWebpackPlugin()
+        new MiniCssWebpackPlugin(),
+        new webpack.DefinePlugin({
+            'process.env.API_URL': JSON.stringify('http://localhost:3001')
+        })
     ]
 };
