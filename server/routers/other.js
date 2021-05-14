@@ -8,6 +8,7 @@ router.get('/dashboard', (req, res) => {
         const dashboardInfo = getDashboardInfo();
         return res.status(200).json(dashboardInfo);
     } catch(e) {
+        console.log(e)
         const error = mapErrorMsgToResponse(e.message);
         return res.status(error.status).json({ msg: error.msg });
     }

@@ -1,5 +1,5 @@
 const shortid = require('shortid');
-const { getEmployeeById } = require('./employees');
+const { getEmployeeById, extractEmployees } = require('./employees');
 const { getDbCollection, setDbCollection } = require('./shared');
 
 const extractProjects = () => {
@@ -124,10 +124,10 @@ const getDashboardInfo = () => {
     const completedProjects = projects.filter(p => p.status === 'completed');
     const onHoldProjects = projects.filter(p => p.status === 'on_hold');
     const inProgressProjects = projects.filter(p => p.status === 'in_progress');
-    const profitableProjects = completedProject.filter(p => p.revenue >= p.expectedRevenue);
+    const profitableProjects = completedProjects.filter(p => p.revenue >= p.expectedRevenue);
     const nonProfitableProjects = completedProjects.filter(p => p.revenue < p.expectedRevenue);
-    const totalRevenue = completedProjects.reduce((a, b) => a.revenue + b.revenue, 0);
-    const totalExpectedRevenue = completedProjects.reduce((a, b) => a.expectedRevenue + b.expectedRevenue, 0);
+    const totalRevenue = completedProjects.reduce((acc, p) => acc + p.revenue, 0);
+    const totalExpectedRevenue = completedProjects.reduce((acc, p) => acc + p.expectedRevenue, 0);
 
     return {
         employees: employees.length,
@@ -136,7 +136,7 @@ const getDashboardInfo = () => {
         onHoldProjects: onHoldProjects.length,
         inProgressProjects: inProgressProjects.length,
         profitableProjects: profitableProjects.length,
-        nonProfitableProjects: nonProfitableProjects,
+        nonProfitableProjects: nonProfitableProjects.length,
         totalRevenue,
         totalExpectedRevenue
     }

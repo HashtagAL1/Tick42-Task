@@ -1,3 +1,83 @@
+.h-10 {
+    height: 10% !important;
+}
+
+.h-20 {
+    height: 20% !important;
+}
+
+.h-30 {
+    height: 30% !important;
+}
+
+.h-40 {
+    height: 40% !important;
+}
+
+.h-50 {
+    height: 50% !important;
+}
+
+.h-60 {
+    height: 60% !important;
+}
+
+.h-70 {
+    height: 70% !important;
+}
+
+.h-80 {
+    height: 80% !important;
+}
+
+.h-90 {
+    height: 90% !important;
+}
+
+.h-100 {
+    height: 100% !important;
+}
+
+.w-10 {
+    width: 10% !important;
+}
+
+.w-20 {
+    width: 20% !important;
+}
+
+.w-30 {
+    width: 30% !important;
+}
+
+.w-40 {
+    width: 40% !important;
+}
+
+.w-50 {
+    width: 50% !important;
+}
+
+.w-60 {
+    width: 60% !important;
+}
+
+.w-70 {
+    width: 70% !important;
+}
+
+.w-80 {
+    width: 80% !important;
+}
+
+.w-90 {
+    width: 90% !important;
+}
+
+.w-100 {
+    width: 100% !important;
+}
+
 .app-container {
     width: 100%;
     height: 100%;
@@ -13,3 +93,47 @@
 .nav-link:hover:not(.active) {
     color: rgba(255, 255, 255, 0.8)
 }
+
+.main-content {
+    width: 100%;
+    min-height: 90%;
+    padding-left: 5%;
+    padding-right: 5%;
+    padding-top: 1%;
+}
+
+.flex-row-container {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.card {
+    margin-right: 5px;
+    width: 100%;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    transition: all .3s ease;
+}
+
+.card:hover {
+    transform: scale(1.07);
+    z-index: 999999;
+    box-shadow: rgba(0, 0, 0, 0.7) 0px 3px 8px;
+}
+
+.loading-container {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    padding-top: 20%;
+    text-align:center;
+    background: rgba(255,255,255, 0.5);
+  }
+
+  .loading-text {
+    font-style: italic;
+    color:#0d6efd;
+  }
