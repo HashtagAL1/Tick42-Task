@@ -7,7 +7,8 @@ module.exports = {
     entry: "./src/index.tsx",
     output: {
         path: path.join(__dirname, "build"),
-        filename: "index.bundle.js"
+        filename: "index.bundle.js",
+        publicPath: '/'
     },
     mode: process.env.NODE_ENV || "development",
     resolve: {
@@ -16,7 +17,8 @@ module.exports = {
     devServer: {
         contentBase: path.join(__dirname, "src"),
         port: 3000,
-        watchContentBase: true
+        watchContentBase: true,
+        historyApiFallback: true
     },
     module: {
         rules: [
@@ -35,8 +37,8 @@ module.exports = {
                 use: [MiniCssWebpackPlugin.loader, "css-loader"]
             },
             {
-                test: /\.(jpg|jpeg|png|gif|svg)$/,
-                use: ["file-loader"]
+                test: /\.(png|jpg|gif|svg|eot|ttf|woff|woff2)$/,
+                use: ["url-loader"]
             }
         ]
     },
