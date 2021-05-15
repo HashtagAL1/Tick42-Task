@@ -3,13 +3,15 @@ const { extractProjects, addProject, deleteProject, startProject, completeProjec
 const { mapErrorMsgToResponse } = require('../services/shared');
 
 router.get('/all', (req, res) => {
-    try {
-        const projects = extractProjects();
-        return res.status(200).json({ projects });
-    } catch(e) {
-        const error = mapErrorMsgToResponse(e.message);
-        return res.status(error.status).json({ msg: error.msg });
-    }
+    setTimeout(() => {
+        try {
+            const projects = extractProjects();
+            return res.status(200).json({ projects });
+        } catch(e) {
+            const error = mapErrorMsgToResponse(e.message);
+            return res.status(error.status).json({ msg: error.msg });
+        }
+    }, 1000)
     
 });
 

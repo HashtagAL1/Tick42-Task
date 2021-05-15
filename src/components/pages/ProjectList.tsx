@@ -5,6 +5,7 @@ import { IProject } from '../../types/projectTypes';
 import { IRootState } from '../../types/reducerTypes';
 import ProjectCardContent from '../projects/ProjectCardContent';
 import ProjectStatusFilter from '../projects/ProjectStatusFilter';
+import Button from '../shared/Button';
 import Card from '../shared/Card';
 
 const ProjectList: React.FC = () => {
@@ -21,15 +22,14 @@ const ProjectList: React.FC = () => {
     }, [dispatch])
     return <div className="main-content">
         <div className="flex-row-container mb-3">
-            <div className="flex-85">
-                
+            <div className="flex-85">                
                 <ProjectStatusFilter />
-
-                <input className="w-30" style={{marginLeft: '3%'}} type="text" placeholder="search" />
             </div>
 
             <div className="flex-15 text-right">
-                <button className="w-75">asd</button>
+                <Button className="w-75 button-green button-rectangular font-color-default font-weight-bold font-size-large" 
+                    title="Create"
+                />
             </div>
         </div>
 

@@ -153,11 +153,11 @@
   }
 
   .font-color-green {
-      color: #22ca1f;
+      color: rgba(34,202,31,1);
   }
 
   .font-color-red {
-      color: #f01a1a;
+      color: rgba(240,26,26,1);
   }
 
   .font-size-heading {
@@ -248,6 +248,10 @@
       text-align: right !important;
   }
 
+  .text-left {
+      text-align: left !important;
+  }
+
   .bg-blue {
       background: #0d6efd;
   }
@@ -257,7 +261,7 @@
   }
 
   .bg-green {
-      background: #22ca1f;
+      background: rgba(34,202,31,1);
   }
 
   .bg-gray {
@@ -438,21 +442,35 @@
       border: 1px solid blue;
   }
 
-  /* .font-size-heading {
-    font-size: 1.1rem;
-}
+  .custom-button, .custom-button:focus {
+      outline: none !important;
+      border: none !important;
+      transition: ease all .3s;
+  }
 
-.font-size-small {
-    font-size: 0.75rem;
-}
+  .button-green {
+      background: rgba(34,202,31,1);
+  }
 
-.font-size-smaller {
-    font-size: 0.6rem;
-}
+  .button-green:hover, .button-green:focus {
+      background: rgb(32, 179, 30);
+  }
 
-.font-size-normal {
-    font-size: unset;
-} */
+  .button-red {
+      background: rgba(240,26,26,1);
+  }
+
+  .button-red:hover, .button-red:focus {
+      background: rgb(185, 22, 22);
+  }
+
+  .button-round {
+      border-radius: 10px;
+  }
+
+  .button-rectangular {
+      border-radius: 5px;
+  }
 
 @media screen and (max-width: 1050px) and (min-width: 870px) {
     .font-size-heading {

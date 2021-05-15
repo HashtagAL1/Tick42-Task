@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { IProject } from '../../types/projectTypes';
+import Button from '../shared/Button';
 
 interface IProps {
     project: IProject
@@ -55,11 +56,21 @@ const ProjectCardContent: React.FC<IProps> = ({ project }) => {
         </div>
 
         <div className="w-100 bottom-element pb-2">
-            <div className="d-inline-block pl-smaller">
-                <button>delete</button>
+            <div className="d-inline-block w-50 text-left pl-smaller">
+                <Button className="button-red button-rectangular font-size-normal font-color-default font-weight-bold" 
+                    title="Delete" 
+                    hide={project.status !== 'Completed'}
+                />
             </div>
-            <div className="d-inline-block right-element pr-smaller">
-                <button>start</button>
+            <div className="d-inline-block w-50 text-right pr-smaller">
+                <Button className="button-green button-rectangular font-size-normal font-color-default font-weight-bold"
+                    title="Start" 
+                    hide={project.status !== 'On hold'}
+                />
+                <Button className="button-green button-rectangular font-size-normal font-color-default font-weight-bold" 
+                    title="Complete" 
+                    hide={project.status !== 'In Progress'} 
+                />
             </div>
         </div>
     </>
