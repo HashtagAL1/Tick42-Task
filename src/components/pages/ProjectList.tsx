@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getProjectsAction, resetProjectsAction } from '../../redux/actions/project-actions/actions';
 import { IProject } from '../../types/projectTypes';
@@ -7,10 +7,13 @@ import ProjectCardContent from '../projects/ProjectCardContent';
 import ProjectStatusFilter from '../projects/ProjectStatusFilter';
 import Button from '../shared/Button';
 import Card from '../shared/Card';
+import Modal from '../shared/Modal';
 
 const ProjectList: React.FC = () => {
     const dispatch = useDispatch();
     const filteredProjects = useSelector<IRootState, IProject[]>(state => state.projects.filteredProjects);
+
+    const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
 
     useEffect(() => {
         dispatch(getProjectsAction());
@@ -28,7 +31,7 @@ const ProjectList: React.FC = () => {
             <div className="flex-15 text-right">
                 <Button className="w-75 button-green button-rectangular font-color-default font-weight-bold font-size-large" 
                     title="Create"
-                    onClick={() => {}}
+                    onClick={() => setIsModalOpen(true)}
                 />
             </div>
         </div>
