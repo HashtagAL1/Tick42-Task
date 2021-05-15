@@ -7,5 +7,5 @@ export interface DashboardData {
     profitableProjects: number,
     nonProfitableProjects: number,
     totalRevenue: number,
-    expectedTotalRevenue: number
+    totalExpectedRevenue: number
 }
