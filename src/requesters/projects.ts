@@ -8,3 +8,7 @@ export const fetchProjects = () => {
 export const deleteProjectRequest = (id: string) => {
     return axios.delete<string>(`http://localhost:3001/projects/${id}`);
 };
+
+export const startProjectRequest = (id: string) => {
+    return axios.post<string>('http://localhost:3001/projects/start', { projectId: id });
+};

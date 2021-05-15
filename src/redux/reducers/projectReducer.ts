@@ -33,7 +33,7 @@ export const projectReducer = (state = initState, action: any): IProjectReducerS
                 ...state,
                 filteredProjects: action.payload
             }
-        case ProjectActionTypes.DELETE_PROJECT_SUCCESS:
+        case ProjectActionTypes.ALTER_PROJECTS_COLLECTION:
             return {
                 ...state,
                 projects: action.payload.projects,

@@ -11,3 +11,15 @@ export const removeProject = (projects: IProject[], id: string): IProject[] => {
 
     return projects.filter(p => p.id !== id);
 };
+
+export const setProjectStatus = (projects: IProject[], id: string, newStatus: string) => {
+    if(!id || !newStatus) return [...projects];
+
+    const targetIndex = projects.findIndex(p => p.id === id);
+
+    if(targetIndex < 0) return [...projects];
+    
+    projects[targetIndex] = {...projects[targetIndex], status: newStatus};
+
+    return [...projects];
+};

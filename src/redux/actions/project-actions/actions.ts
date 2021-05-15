@@ -1,6 +1,6 @@
 import { IProject } from "../../../types/projectTypes";
 import ProjectActionTypes from "./actionTypes";
-import { DeleteProjectAction, DeleteProjectFailAction, DeleteProjectSuccessAction, DeleteProjectSuccessActionPayload, FilterProjectsByStatusAction, GetProjectsAction, GetProjectsFailAction, GetProjectsSuccessAction, ResetProjectsAction, SetSelectedProjectStatusAction } from "./types";
+import { AlterProjectsCollectionAction, AlterProjectsCollectionActionPayload, DeleteProjectAction, DeleteProjectFailAction, DeleteProjectSuccessAction, FilterProjectsByStatusAction, GetProjectsAction, GetProjectsFailAction, GetProjectsSuccessAction, ResetProjectsAction, SetSelectedProjectStatusAction } from "./types";
 
 export const getProjectsAction = (): GetProjectsAction => {
     return { type: ProjectActionTypes.GET_PROJECTS };
@@ -26,12 +26,28 @@ export const deleteProjectAction = (id: string): DeleteProjectAction => {
     return { type: ProjectActionTypes.DELETE_PROJECT, payload: id };
 };
 
-export const deleteProjectSuccessAction = (payload: DeleteProjectSuccessActionPayload): DeleteProjectSuccessAction => {
-    return { type: ProjectActionTypes.DELETE_PROJECT_SUCCESS, payload };
+export const deleteProjectSuccessAction = (): DeleteProjectSuccessAction => {
+    return { type: ProjectActionTypes.DELETE_PROJECT_SUCCESS };
 };
 
 export const deleteProjectFailAction = (): DeleteProjectFailAction => {
     return { type: ProjectActionTypes.DELETE_PROJECT_FAIL };
+};
+
+export const alterProjectCollectionAction = (payload: AlterProjectsCollectionActionPayload): AlterProjectsCollectionAction => {
+    return { type: ProjectActionTypes.ALTER_PROJECTS_COLLECTION, payload };
+};
+
+export const startProjectAction = (id: string) => {
+    return { type: ProjectActionTypes.START_PROJECT, payload: id };
+};
+
+export const startProjectSuccessAction = () => {
+    return { type: ProjectActionTypes.START_PROJECT_SUCCESS };
+};
+
+export const startProjectFailAction = () => {
+    return { type: ProjectActionTypes.START_PROJECT_FAIL };
 };
 
 export const resetProjectsAction = (): ResetProjectsAction => {

@@ -55,16 +55,19 @@ router.delete('/:id', (req, res) => {
 
 router.post('/start', (req, res) => {
     const projectId = req.body.projectId;
-    try {
-        const startedProject = startProject(projectId);
-        return res.status(200).json({
-            msg: 'Project started',
-            project: startedProject
-        })
-    } catch(e) {
-        const error = mapErrorMsgToResponse(e.message);
-        return res.status(error.status).json({ msg: error.msg });
-    }
+    setTimeout(() => {
+        try {
+            const { id, status } = startProject(projectId);
+            return res.status(200).json({
+                msg: 'Project started',
+                projectId: id,
+                status
+            })
+        } catch(e) {
+            const error = mapErrorMsgToResponse(e.message);
+            return res.status(error.status).json({ msg: error.msg });
+        }
+    }, 1000)
 });
 
 router.post('/complete', (req, res) => {

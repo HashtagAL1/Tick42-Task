@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { deleteProjectAction } from '../../redux/actions/project-actions/actions';
+import { deleteProjectAction, startProjectAction } from '../../redux/actions/project-actions/actions';
 import { IProject } from '../../types/projectTypes';
 import Button from '../shared/Button';
 
@@ -70,7 +70,7 @@ const ProjectCardContent: React.FC<IProps> = ({ project }) => {
                 <Button className="button-green button-rectangular font-size-normal font-color-default font-weight-bold"
                     title="Start" 
                     hide={project.status !== 'On hold'}
-                    onClick={() => {}}
+                    onClick={() => dispatch(startProjectAction(project.id))}
                 />
                 <Button className="button-green button-rectangular font-size-normal font-color-default font-weight-bold" 
                     title="Complete" 

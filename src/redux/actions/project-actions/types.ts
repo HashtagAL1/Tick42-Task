@@ -29,14 +29,31 @@ export interface DeleteProjectAction {
     payload: string
 };
 
-export interface DeleteProjectSuccessActionPayload {
+export interface AlterProjectsCollectionActionPayload {
     projects: IProject[],
     filteredProjects: IProject[]
-}
+};
+
+export interface StartProjectAction {
+    type: typeof ProjectActionTypes.START_PROJECT,
+    payload: string
+};
+
+export interface StartProjectSuccessAction {
+    type: typeof ProjectActionTypes.START_PROJECT_SUCCESS
+};
+
+export interface StartProjectFailAction {
+    type: typeof ProjectActionTypes.START_PROJECT_FAIL
+};
+
+export interface AlterProjectsCollectionAction {
+    type: typeof ProjectActionTypes.ALTER_PROJECTS_COLLECTION,
+    payload: AlterProjectsCollectionActionPayload
+};
 
 export interface DeleteProjectSuccessAction {
-    type: typeof ProjectActionTypes.DELETE_PROJECT_SUCCESS,
-    payload: DeleteProjectSuccessActionPayload
+    type: typeof ProjectActionTypes.DELETE_PROJECT_SUCCESS
 };
 
 export interface DeleteProjectFailAction {
