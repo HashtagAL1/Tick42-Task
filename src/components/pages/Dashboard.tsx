@@ -1,9 +1,13 @@
+import { ChartData } from 'chart.js';
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getDashboardDataAction, resetDashboardAction } from '../../redux/actions/dashboard-actions/actions';
 import { IRootState } from '../../types/reducerTypes';
 import DashboardCardContent from '../dashboard/DashboardCardContent'
+import DashboardRevenueChart from '../dashboard/DashboardRevenueChart';
+import DashboardStatusChart from '../dashboard/DashboardStatusChart';
 import Card from '../shared/Card';
+import Chart from '../shared/Chart';
 
 const Dashboard: React.FC = () => {
 
@@ -48,6 +52,15 @@ const Dashboard: React.FC = () => {
                     isCurrency={true} 
                 />
             </Card>
+        </div>
+
+        <div className="flex-row-container justify-content-space-around mt-5">
+            <div className="w-30 text-center">
+                <DashboardStatusChart />
+            </div>
+            <div className="w-30 text-center">
+                <DashboardRevenueChart />
+            </div>
         </div>
     </div>
 };
