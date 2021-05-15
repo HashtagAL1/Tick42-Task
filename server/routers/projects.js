@@ -42,13 +42,15 @@ router.post('/add', (req, res) => {
 
 router.delete('/:id', (req, res) => {
     const projectId = req.params.id;
-    try {
-        deleteProject(projectId);
-        return res.status(200).json({ msg: 'Project deleted successfully' });
-    } catch(e) {
-        const error = mapErrorMsgToResponse(e.message);
-        return res.status(error.status).json({ msg: error.msg });
-    }
+    setTimeout(() => {
+        try {
+            deleteProject(projectId);
+            return res.status(200).json({ msg: 'Project deleted successfully', projectId });
+        } catch(e) {
+            const error = mapErrorMsgToResponse(e.message);
+            return res.status(error.status).json({ msg: error.msg });
+        }
+    }, 1000)
 });
 
 router.post('/start', (req, res) => {

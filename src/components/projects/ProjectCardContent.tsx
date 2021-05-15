@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { deleteProjectAction } from '../../redux/actions/project-actions/actions';
 import { IProject } from '../../types/projectTypes';
 import Button from '../shared/Button';
 
@@ -7,6 +9,7 @@ interface IProps {
 }
 
 const ProjectCardContent: React.FC<IProps> = ({ project }) => {
+    const dispatch = useDispatch();
     const [statusClassName, setStatusClassName]: [string, (statusClassName: string) => void] = useState('');
 
     useEffect(() => {
@@ -60,16 +63,19 @@ const ProjectCardContent: React.FC<IProps> = ({ project }) => {
                 <Button className="button-red button-rectangular font-size-normal font-color-default font-weight-bold" 
                     title="Delete" 
                     hide={project.status !== 'Completed'}
+                    onClick={() => dispatch(deleteProjectAction(project.id))}
                 />
             </div>
             <div className="d-inline-block w-50 text-right pr-smaller">
                 <Button className="button-green button-rectangular font-size-normal font-color-default font-weight-bold"
                     title="Start" 
                     hide={project.status !== 'On hold'}
+                    onClick={() => {}}
                 />
                 <Button className="button-green button-rectangular font-size-normal font-color-default font-weight-bold" 
                     title="Complete" 
                     hide={project.status !== 'In Progress'} 
+                    onClick={() => {}}
                 />
             </div>
         </div>

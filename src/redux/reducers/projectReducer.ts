@@ -33,6 +33,12 @@ export const projectReducer = (state = initState, action: any): IProjectReducerS
                 ...state,
                 filteredProjects: action.payload
             }
+        case ProjectActionTypes.DELETE_PROJECT_SUCCESS:
+            return {
+                ...state,
+                projects: action.payload.projects,
+                filteredProjects: action.payload.filteredProjects
+            }
         case ProjectActionTypes.RESET_PROJECTS:
             return {
                 ...initState

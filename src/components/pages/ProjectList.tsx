@@ -10,7 +10,6 @@ import Card from '../shared/Card';
 
 const ProjectList: React.FC = () => {
     const dispatch = useDispatch();
-
     const filteredProjects = useSelector<IRootState, IProject[]>(state => state.projects.filteredProjects);
 
     useEffect(() => {
@@ -29,6 +28,7 @@ const ProjectList: React.FC = () => {
             <div className="flex-15 text-right">
                 <Button className="w-75 button-green button-rectangular font-color-default font-weight-bold font-size-large" 
                     title="Create"
+                    onClick={() => {}}
                 />
             </div>
         </div>

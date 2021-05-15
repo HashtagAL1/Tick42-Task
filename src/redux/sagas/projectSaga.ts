@@ -1,12 +1,12 @@
 import { AxiosResponse } from 'axios';
 import { call, put, select, take, takeEvery, takeLatest } from 'redux-saga/effects';
-import { fetchProjects } from '../../requesters/projects';
+import { deleteProjectRequest, fetchProjects } from '../../requesters/projects';
 import { IProject } from '../../types/projectTypes';
 import { IRootState } from '../../types/reducerTypes';
-import { filterProjects } from '../../utils/projectUtils';
-import { getProjectsSuccessAction, getProjectsFailAction, setSelectedProjectStatusAction, filterProjectsByStatusAction } from '../actions/project-actions/actions';
+import { filterProjects, removeProject } from '../../utils/projectUtils';
+import { getProjectsSuccessAction, getProjectsFailAction, setSelectedProjectStatusAction, filterProjectsByStatusAction, deleteProjectAction, deleteProjectSuccessAction, deleteProjectFailAction } from '../actions/project-actions/actions';
 import ProjectActionTypes from '../actions/project-actions/actionTypes';
-import { SetSelectedProjectStatusAction } from '../actions/project-actions/types';
+import { DeleteProjectAction, DeleteProjectSuccessActionPayload, SetSelectedProjectStatusAction } from '../actions/project-actions/types';
 import { setLoading } from '../actions/shared-actions/actions';
 
 const getStoredProjects = (state: IRootState) => state.projects.projects;
@@ -15,6 +15,7 @@ const getStoredSelectedStatus = (state: IRootState) => state.projects.selectedSt
 export function* projectsSaga() {
     yield takeLatest(ProjectActionTypes.GET_PROJECTS, getProjects);
     yield takeLatest(ProjectActionTypes.SET_SELECTED_STATUS, filterProjectsByStatus);
+    yield takeLatest(ProjectActionTypes.DELETE_PROJECT, deleteProject);
 };
 
 export function* getProjects() {
@@ -37,4 +38,26 @@ export function* filterProjectsByStatus() {
     const filteredProjects: IProject[] = yield call(filterProjects, projects, selectedStatus);
 
     yield put(filterProjectsByStatusAction(filteredProjects));
+};
+
+export function* deleteProject(action: DeleteProjectAction) {
+    try {
+        const projects: IProject[] = yield select(getStoredProjects);
+        const selectedStatus: string = yield select(getStoredSelectedStatus)
+
+        yield put(setLoading(true));
+        const response: AxiosResponse = yield call(deleteProjectRequest, action.payload);
+        const { projectId } = response.data;
+        const newProjects: IProject[] = yield call(removeProject, projects, projectId);
+        const filteredProjects: IProject[] = yield call(filterProjects, newProjects, selectedStatus);
+
+        const payload: DeleteProjectSuccessActionPayload = { projects: newProjects, filteredProjects };
+
+        yield put(deleteProjectSuccessAction(payload));
+        yield put(setLoading(false));
+
+    } catch(e) {
+        yield put(deleteProjectFailAction());
+        yield put(setLoading(false));
+    }
 };

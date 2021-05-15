@@ -24,6 +24,25 @@ export interface FilterProjectsByStatusAction {
     payload: IProject[]
 };
 
+export interface DeleteProjectAction {
+    type: typeof ProjectActionTypes.DELETE_PROJECT,
+    payload: string
+};
+
+export interface DeleteProjectSuccessActionPayload {
+    projects: IProject[],
+    filteredProjects: IProject[]
+}
+
+export interface DeleteProjectSuccessAction {
+    type: typeof ProjectActionTypes.DELETE_PROJECT_SUCCESS,
+    payload: DeleteProjectSuccessActionPayload
+};
+
+export interface DeleteProjectFailAction {
+    type: typeof ProjectActionTypes.DELETE_PROJECT_FAIL
+};
+
 export interface ResetProjectsAction {
     type: typeof ProjectActionTypes.RESET_PROJECTS
 };

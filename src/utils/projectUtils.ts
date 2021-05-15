@@ -5,3 +5,9 @@ export const filterProjects = (projects: IProject[], status: string): IProject[]
 
     return projects.filter(p => p.status === status);
 };
+
+export const removeProject = (projects: IProject[], id: string): IProject[] => {
+    if(!id) return [...projects];
+
+    return projects.filter(p => p.id !== id);
+};

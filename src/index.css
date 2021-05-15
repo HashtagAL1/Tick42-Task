@@ -133,6 +133,7 @@
     height: 100%;
     width: 100%;
     position: absolute;
+    z-index: 99999999999999 !important;
     top: 0;
     padding-top: 20%;
     text-align:center;
