@@ -17,7 +17,7 @@ const extractProjects = () => {
 
 const getEmployeeActiveProjects = (employeeId) => {
     const projects = extractProjects();
-    let result = projects.filter(p => p.employees.indexOf(employeeId) > -1 && p.status === 'in_progress');
+    let result = projects.filter(p => p.employees.indexOf(employeeId) > -1 && p.status === 'In Progress');
 
     result = result.map((p) => {
         return { id: p.id, name: p.name }
@@ -33,7 +33,7 @@ const addProject = (project) => {
     } else {
         const newProject = {...project, 
             employees: extractEmployeeIds(project.employees), 
-            status: 'on_hold', 
+            status: 'On hold', 
             revenue: null,
             id: shortid.generate()
         };
@@ -53,7 +53,7 @@ const startProject = (projectId) => {
     if (targetProjectIndex < 0) {
         throw new Error('NOT_FOUND_PROJECT');
     } else {
-        projects[targetProjectIndex] = {...projects[targetProjectIndex], status: 'in_progress'};
+        projects[targetProjectIndex] = {...projects[targetProjectIndex], status: 'In Progress'};
         setDbCollection('projects', projects);
         return projects[targetProjectIndex];
     }
@@ -65,7 +65,7 @@ const completeProject = (projectId, revenue) => {
     if (targetProjectIndex < 0) {
         throw new Error('NOT_FOUND_PROJECT');
     } else {
-        projects[targetProjectIndex] = {...projects[targetProjectIndex], status: 'completed', revenue: revenue};
+        projects[targetProjectIndex] = {...projects[targetProjectIndex], status: 'Completed', revenue: revenue};
         setDbCollection('projects', projects);
         return projects[targetProjectIndex];
     }
@@ -121,9 +121,9 @@ const deleteProject = (id) => {
 const getDashboardInfo = () => {
     const employees = extractEmployees();
     const projects = extractProjects();
-    const completedProjects = projects.filter(p => p.status === 'completed');
-    const onHoldProjects = projects.filter(p => p.status === 'on_hold');
-    const inProgressProjects = projects.filter(p => p.status === 'in_progress');
+    const completedProjects = projects.filter(p => p.status === 'Completed');
+    const onHoldProjects = projects.filter(p => p.status === 'On hold');
+    const inProgressProjects = projects.filter(p => p.status === 'In Progress');
     const profitableProjects = completedProjects.filter(p => p.revenue >= p.expectedRevenue);
     const nonProfitableProjects = completedProjects.filter(p => p.revenue < p.expectedRevenue);
     const totalRevenue = completedProjects.reduce((acc, p) => acc + p.revenue, 0);

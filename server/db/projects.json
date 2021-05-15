@@ -3,7 +3,7 @@
         {
             "name": "Licensed Concrete Sausages",
             "id": "MWBxcZoJE188as7EB-dUA",
-            "status": "on_hold",
+            "status": "On hold",
             "employees": [
                 "uUASR2u1LKoHOlwp3hcJ-"
             ],
@@ -13,7 +13,7 @@
         {
             "name": "Handmade Plastic Bike",
             "id": "g67kHEcEJQZHTqJlzdyAp",
-            "status": "in_progress",
+            "status": "In Progress",
             "employees": [
                 "foGglMQilyVOY-sZwYCY-",
                 "nhPY8Wl5bGvfmAFETkr8q"
@@ -24,7 +24,7 @@
         {
             "name": "Handmade Frozen Pizza",
             "id": "BvMf9FE6m0oP3kpu2bFQZ",
-            "status": "completed",
+            "status": "Completed",
             "employees": [
                 "YxeX-K6O1LyGmGEqIRVpO",
                 "F51qA4tchFW88d5CPZxCq"
@@ -35,7 +35,7 @@
         {
             "name": "Small Rubber Salad",
             "id": "pJbPUFoTCsOLTTyT6melr",
-            "status": "in_progress",
+            "status": "In Progress",
             "employees": [
                 "gtG5TRjOW7o5DeHkuHYZO",
                 "aYy7-wj_ip-S8GpASPZf-",
@@ -48,7 +48,7 @@
         {
             "name": "Refined Steel Soap",
             "id": "VLqSB49YI6Wrn1oU5gupF",
-            "status": "completed",
+            "status": "Completed",
             "employees": [
                 "u-lzR9M4d9DQJE9BQrOaN",
                 "foGglMQilyVOY-sZwYCY-",
@@ -60,7 +60,7 @@
         {
             "name": "Handcrafted Steel Pants",
             "id": "KI5sJEGVnlEixMG3xWj3n",
-            "status": "completed",
+            "status": "Completed",
             "employees": [
                 "F51qA4tchFW88d5CPZxCq",
                 "nhPY8Wl5bGvfmAFETkr8q",
@@ -73,7 +73,7 @@
         {
             "name": "Rustic Frozen Ball",
             "id": "O6QO7Nv4IxwB6Xh9xAQ0n",
-            "status": "in_progress",
+            "status": "In Progress",
             "employees": [
                 "-Y9-LIcF48hNUC_jwEMN3",
                 "QGRnylpCgFviu1p0IlN0i",
@@ -85,7 +85,7 @@
         {
             "name": "Fantastic Frozen Sausages",
             "id": "7bJKscxpXYbvrTWS2B25s",
-            "status": "in_progress",
+            "status": "In Progress",
             "employees": [
                 "gtG5TRjOW7o5DeHkuHYZO",
                 "ppIhwMupGlk3k1zKKgBeo",
@@ -97,7 +97,7 @@
         {
             "name": "Small Fresh Pants",
             "id": "T_7RguXMqFQ4X3UGe1jKR",
-            "status": "completed",
+            "status": "Completed",
             "employees": [
                 "ppIhwMupGlk3k1zKKgBeo",
                 "qUlO-h49xOyMNe-A-BrdH",
@@ -109,7 +109,7 @@
         {
             "name": "Refined Concrete Pants",
             "id": "Ym2Un3rvI9DNknk5bNswl",
-            "status": "in_progress",
+            "status": "In Progress",
             "employees": [
                 "IAJD9PxFBznVo9nUQzJ8e",
                 "KVpyPI4ul1RFDmtuG7N2m",

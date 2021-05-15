@@ -1,7 +1,10 @@
 import { IProject } from "./projectTypes";
 
 export interface IProjectReducerState {
-    projects: IProject[]
+    projects: IProject[],
+    filteredProjects: IProject[],
+    selectedStatus: string,
+    statuses: string[]
 };
 
 export interface ISharedReducerState {
