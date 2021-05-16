@@ -2,13 +2,25 @@ const shortid = require('shortid');
 const { getEmployeeById, extractEmployees } = require('./employees');
 const { getDbCollection, setDbCollection } = require('./shared');
 
-const extractProjects = () => {
+const extractProjects = (shouldAddEmployees) => {
     try {
         const rawProjects = getDbCollection('projects');
-        if (Object.keys(rawProjects).length === 0) {
+        if (rawProjects.projects.length === 0) {
             throw new Error('ISE');
         } else {
-            return rawProjects.projects;
+
+            if(shouldAddEmployees) {
+                let projects = rawProjects.projects
+                for (let p of projects) {
+                    let empl = p.employees.map(e => getEmployeeById(e))
+                    p.employees = [...empl];
+                }
+                
+                return projects;
+            } else {
+                return rawProjects.projects;
+            }
+            
         }
     } catch(e) {
         throw new Error('ISE');
@@ -19,20 +31,18 @@ const getEmployeeActiveProjects = (employeeId) => {
     const projects = extractProjects();
     let result = projects.filter(p => p.employees.indexOf(employeeId) > -1 && p.status === 'In Progress');
 
-    result = result.map((p) => {
-        return { id: p.id, name: p.name }
-    });
+    result = result.map(p > p.name);
     
     return result;
 };
 
 const addProject = (project) => {
-    const projects = extractProjects();
+    const projects = extractProjects(false);
     if (isProjectExisting(project, projects)) {
         throw new Error('DUPL_PROJECT')
     } else {
         const newProject = {...project, 
-            employees: extractEmployeeIds(project.employees), 
+            employees: extractEmployeeIds(project.employees),
             status: 'On hold', 
             revenue: null,
             id: shortid.generate()
@@ -42,13 +52,14 @@ const addProject = (project) => {
             setDbCollection('projects', [...projects, newProject]);
             return newProject; 
         } catch(e) {
+            console.log(e);
             throw new Error('ISE')
         }
     }
 };
 
 const startProject = (projectId) => {
-    const projects = extractProjects();
+    const projects = extractProjects(false);
     const targetProjectIndex = projects.findIndex(p => p.id === projectId);
     if (targetProjectIndex < 0) {
         throw new Error('NOT_FOUND_PROJECT');
@@ -60,7 +71,7 @@ const startProject = (projectId) => {
 };
 
 const completeProject = (projectId, revenue) => {
-    const projects = extractProjects();
+    const projects = extractProjects(false);
     const targetProjectIndex = projects.findIndex(p => p.id === projectId);
     if (targetProjectIndex < 0) {
         throw new Error('NOT_FOUND_PROJECT');
@@ -78,14 +89,14 @@ const getProjectTeam = (projectId) => {
         throw new Error('NOT_FOUND_PROJECT');
     } else {
         let projectTeam = [];
-        for (let e of targetProject.employees) {
-            try {
-                const emp = getEmployeeById(e);
-                projectTeam.push(emp);
-            } catch(e) {
+        // for (let e of targetProject.employees) {
+        //     try {
+        //         const emp = getEmployeeById(e);
+        //         projectTeam.push(emp);
+        //     } catch(e) {
 
-            }
-        }
+        //     }
+        // }
 
         return projectTeam;
     }
@@ -104,7 +115,7 @@ const editProjectTeam = (projectId, newTeam) => {
 };
 
 const deleteProject = (id) => {
-    const projects = extractProjects();
+    const projects = extractProjects(false);
     const filteredProjects = projects.filter(p => p.id !== id);
     if (projects.length === filteredProjects.length) {
         throw new Error('NOT_FOUND_PROJECT')
@@ -120,7 +131,7 @@ const deleteProject = (id) => {
 
 const getDashboardInfo = () => {
     const employees = extractEmployees();
-    const projects = extractProjects();
+    const projects = extractProjects(false);
     const completedProjects = projects.filter(p => p.status === 'Completed');
     const onHoldProjects = projects.filter(p => p.status === 'On hold');
     const inProgressProjects = projects.filter(p => p.status === 'In Progress');

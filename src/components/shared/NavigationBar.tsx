@@ -4,7 +4,7 @@ import { IRoute, ILocation } from '../../types/sharedTypes'
 
 const NavigationBar: React.FC = () => {
     const location = useLocation<ILocation>();
-    const [routes, setRoutes]: [IRoute[], (routes: IRoute[]) => void] = useState([
+    const [routes, setRoutes] = useState<IRoute[]>([
         { name: 'Dashboard', to: '/' },
         { name: 'Projects', to: '/projects' },
         { name: 'Employees', to: '/employees' }

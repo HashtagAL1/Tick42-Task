@@ -1,10 +1,12 @@
+import { IEmployee } from "./employeeTypes";
 import { IProject } from "./projectTypes";
 
 export interface IProjectReducerState {
     projects: IProject[],
     filteredProjects: IProject[],
     selectedStatus: string,
-    statuses: string[]
+    statuses: string[],
+    selectedProject: IProject | null
 };
 
 export interface ISharedReducerState {
@@ -14,7 +16,8 @@ export interface ISharedReducerState {
 export interface IRootState {
     shared: ISharedReducerState,
     projects: IProjectReducerState,
-    dashboard: IDashboardReducerState
+    dashboard: IDashboardReducerState,
+    employees: IEmployeesReducerState
 };
 
 export interface IDashboardReducerState {
@@ -28,3 +31,7 @@ export interface IDashboardReducerState {
     totalRevenue: number | null,
     totalExpectedRevenue: number | null
 };
+
+export interface IEmployeesReducerState {
+    employees: IEmployee[]
+}

@@ -1,5 +1,5 @@
 import React from 'react';
-import { ChartData, ChartOptions } from 'chart.js';
+import { ChartData } from 'chart.js';
 import { Bar, Doughnut, Pie } from 'react-chartjs-2'
 
 interface IProps {

@@ -1,6 +1,11 @@
 import { DashboardData } from "../../../types/dashboardTypes";
 import DashboardActionTypes from "./actionTypes";
-import { GetDashboardData, GetDashboardDataFailAction, GetDashboardDataSuccessAction, ResetDashboardAction } from "./types";
+import { 
+    GetDashboardData, 
+    GetDashboardDataFailAction, 
+    GetDashboardDataSuccessAction, 
+    ResetDashboardAction 
+} from "./types";
 
 export const getDashboardDataAction = (): GetDashboardData => {
     return { type: DashboardActionTypes.GET_DASHBOARD_DATA };

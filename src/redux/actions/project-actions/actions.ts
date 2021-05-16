@@ -1,6 +1,30 @@
 import { IProject } from "../../../types/projectTypes";
 import ProjectActionTypes from "./actionTypes";
-import { AlterProjectsCollectionAction, AlterProjectsCollectionActionPayload, DeleteProjectAction, DeleteProjectFailAction, DeleteProjectSuccessAction, FilterProjectsByStatusAction, GetProjectsAction, GetProjectsFailAction, GetProjectsSuccessAction, ResetProjectsAction, SetSelectedProjectStatusAction } from "./types";
+import { 
+    AddProjectAction,
+    AddProjectFailAction, 
+    AddProjectSuccessAction,
+    AlterProjectsCollectionAction, 
+    AlterProjectsCollectionActionPayload, 
+    CompleteProjectAction, 
+    CompleteProjectActionPayload, 
+    CompleteProjectFailAction, 
+    CompleteProjectSuccessAction, 
+    DeleteProjectAction, 
+    DeleteProjectFailAction, 
+    DeleteProjectSuccessAction, 
+    EditProjectTeamAction, 
+    EditProjectTeamActionPayload, 
+    EditProjectTeamFailAction, 
+    EditProjectTeamSuccessAction, 
+    FilterProjectsByStatusAction, 
+    GetProjectsAction, 
+    GetProjectsFailAction, 
+    GetProjectsSuccessAction, 
+    ResetProjectsAction, 
+    SetSelectedProjectAction, 
+    SetSelectedProjectStatusAction 
+} from "./types";
 
 export const getProjectsAction = (): GetProjectsAction => {
     return { type: ProjectActionTypes.GET_PROJECTS };
@@ -52,4 +76,43 @@ export const startProjectFailAction = () => {
 
 export const resetProjectsAction = (): ResetProjectsAction => {
     return { type: ProjectActionTypes.RESET_PROJECTS };
+};
+
+export const addProjectAction = (project: IProject): AddProjectAction => {
+    return { type: ProjectActionTypes.ADD_PROJECT, payload: project };
+};
+
+export const addProjectSuccessAction = (): AddProjectSuccessAction => {
+    return { type: ProjectActionTypes.ADD_PROJECT_SUCCESS };
+};
+
+export const completeProjectAction = (payload: CompleteProjectActionPayload): CompleteProjectAction => {
+    return { type: ProjectActionTypes.COMPLETE_PROJECT, payload }; 
+};
+
+export const completeProjectSuccessAction = (): CompleteProjectSuccessAction => {
+    return { type: ProjectActionTypes.COMPLETE_PROJECT_SUCCESS }
+};
+
+export const completeProjectFailAction = (): CompleteProjectFailAction => {
+    return { type: ProjectActionTypes.COMPLETE_PROJECT_FAIL };
+};
+
+export const setSelectedProject = (project: IProject | null): SetSelectedProjectAction => {
+    return { type: ProjectActionTypes.SET_SELECTED_PROJECT, payload: project };
+};
+
+export const editProjectTeamAction = (payload: EditProjectTeamActionPayload): EditProjectTeamAction => {
+    return { type: ProjectActionTypes.EDIT_PROJECT_TEAM, payload }
+};
+
+export const editProjectTeamSuccessAction = (): EditProjectTeamSuccessAction => {
+    return { type: ProjectActionTypes.EDIT_PROJECT_TEAM_SUCCESS };
+};
+
+export const editProjectTeamFailAction = (): EditProjectTeamFailAction => {
+    return { type: ProjectActionTypes.EDIT_PROJECT_TEAM_FAIL };
+};
+export const addProjectFailAction = (): AddProjectFailAction => {
+    return { type: ProjectActionTypes.ADD_PROJECT_FAIL };
 };

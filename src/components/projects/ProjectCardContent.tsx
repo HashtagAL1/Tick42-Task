@@ -1,23 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { deleteProjectAction, startProjectAction } from '../../redux/actions/project-actions/actions';
+import { deleteProjectAction, setSelectedProject, startProjectAction } from '../../redux/actions/project-actions/actions';
 import { IProject } from '../../types/projectTypes';
 import Button from '../shared/Button';
-import Swal from 'sweetalert2'
-import withReactContent from 'sweetalert2-react-content'
-import CompleteProjectAlertContent from './CompleteProjectAlertContent';
-
-const Alert = withReactContent(Swal);
 
 interface IProps {
-    project: IProject
+    project: IProject,
+    openTeamModal: () => void,
+    onComplete: () => void
 }
 
-const ProjectCardContent: React.FC<IProps> = ({ project }) => {
+const ProjectCardContent: React.FC<IProps> = ({ project, openTeamModal, onComplete }) => {
     const dispatch = useDispatch();
     const [statusClassName, setStatusClassName] = useState<string>('');
-
-    const [isCompleteAlertDisplayed, setIsCompleteAlertDisplayed] = useState<boolean>(false);
 
     useEffect(() => {
         let className = '';
@@ -31,24 +26,17 @@ const ProjectCardContent: React.FC<IProps> = ({ project }) => {
         setStatusClassName(className);
     }, [project]);
 
-    useEffect(() => {
-        if(isCompleteAlertDisplayed) {
-            Alert.fire({
-                showCancelButton: false,
-                showConfirmButton: false,
-                showCloseButton: true,
-                customClass: {
-                    htmlContainer: 'mt-smallest',
-                    popup: 'w-60'
-                },
-                html: <CompleteProjectAlertContent close={Alert.close} />
-            })
+    const getArrowClass = () => {
+        if(project.expectedRevenue && project.revenue && project.revenue >= project.expectedRevenue) {
+            return 'arrow-up';
         }
-    }, [isCompleteAlertDisplayed])
+
+        return 'arrow-down';
+    };
 
     return <>
         <div className="w-100 h-100">
-            <div className={`w-100 ${statusClassName}`}>
+            <div className={`w-100 br-t-5 ${statusClassName}`}>
                 <div className="pl-small text-left project-status-text font-size-normal">{project.status}</div>
             </div>
 
@@ -61,7 +49,7 @@ const ProjectCardContent: React.FC<IProps> = ({ project }) => {
                 <div>
                     <span className="font-size-small">Expected revenue: </span>
                     <span className="font-color-gray font-weight-bold font-size-normal"> 
-                        {project.expectedRevenue.toFixed(2)}$
+                        {project.expectedRevenue?.toFixed(2)}$
                     </span>
                 </div>
                 <div className="font-size-small">
@@ -70,12 +58,19 @@ const ProjectCardContent: React.FC<IProps> = ({ project }) => {
                         {project.revenue !== null ? `${project.revenue.toFixed(2)}$` : '-'}
                     </span>
                     {project.revenue !== null ? 
-                        <i className={`ml-smaller arrow ${project.revenue >= project.expectedRevenue ? 'arrow-up': 'arrow-down'}`}></i> 
+                        <i className={`ml-smaller arrow ${getArrowClass()}`}></i> 
                         : null
                     }
                 </div>
                 <div className="font-size-small">
-                    Team consists of <span className="link-like-text">{project.employees.length} members</span>
+                    <span>Team consists of: </span>
+                    <span className="link-like-text"
+                        onClick={() => {
+                            dispatch(setSelectedProject(project));
+                            openTeamModal();
+                        }}>
+                        {project.employees.length} members
+                    </span>
                 </div>
             </div>
         </div>
@@ -97,7 +92,10 @@ const ProjectCardContent: React.FC<IProps> = ({ project }) => {
                 <Button className="button-green pt-1 pb-1 button-rectangular font-size-normal font-color-default font-weight-bold" 
                     title="Complete" 
                     hide={project.status !== 'In Progress'} 
-                    onClick={() => setIsCompleteAlertDisplayed(true)}
+                    onClick={() => {
+                        dispatch(setSelectedProject(project))
+                        onComplete();
+                    }}
                 />
             </div>
         </div>

@@ -5,7 +5,8 @@ export const initState: IProjectReducerState = {
     projects: [],
     filteredProjects: [],
     selectedStatus: 'All',
-    statuses: ['All', 'On hold', 'In Progress', 'Completed']
+    statuses: ['All', 'On hold', 'In Progress', 'Completed'],
+    selectedProject: null
 };
 
 export const projectReducer = (state = initState, action: any): IProjectReducerState => {
@@ -15,7 +16,8 @@ export const projectReducer = (state = initState, action: any): IProjectReducerS
                 ...state,
                 projects: action.payload,
                 filteredProjects: action.payload,
-                selectedStatus: 'All'
+                selectedStatus: 'All',
+                selectedProject: null
             }
         case ProjectActionTypes.GET_PROJECTS_FAIL:
             return {
@@ -38,6 +40,11 @@ export const projectReducer = (state = initState, action: any): IProjectReducerS
                 ...state,
                 projects: action.payload.projects,
                 filteredProjects: action.payload.filteredProjects
+            }
+        case ProjectActionTypes.SET_SELECTED_PROJECT:
+            return {
+                ...state,
+                selectedProject: action.payload
             }
         case ProjectActionTypes.RESET_PROJECTS:
             return {

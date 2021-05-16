@@ -1,4 +1,3 @@
-import { ChartData, ChartOptions } from 'chart.js';
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { IRootState } from '../../types/reducerTypes';
@@ -9,7 +8,7 @@ const DashboardStatusChart: React.FC = () => {
     const inProgressProjects = useSelector<IRootState, number | null>(state => state.dashboard.inProgressProjects);
     const completedProjects = useSelector<IRootState, number | null>(state => state.dashboard.completedProjects);
     
-    const [chartData, setChartData]: [any, (chartData: any) => void] = useState(null);
+    const [chartData, setChartData] = useState<any>(null);
 
     useEffect(() => {
         if (onHoldProjects !== null && inProgressProjects !== null && completedProjects !== null) {

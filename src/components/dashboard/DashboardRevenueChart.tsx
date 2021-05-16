@@ -7,7 +7,7 @@ const DashboardRevenueChart: React.FC = () => {
     const profitableProjects = useSelector<IRootState, number | null>(state => state.dashboard.profitableProjects)
     const nonProfitableProjects = useSelector<IRootState, number | null>(state => state.dashboard.nonProfitableProjects);
 
-    const [chartData, setChartData]: [any, (chartData: any) => void] = useState(null);
+    const [chartData, setChartData] = useState<any>(null);
 
     useEffect(() => {
 

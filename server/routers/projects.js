@@ -5,7 +5,7 @@ const { mapErrorMsgToResponse } = require('../services/shared');
 router.get('/all', (req, res) => {
     setTimeout(() => {
         try {
-            const projects = extractProjects();
+            const projects = extractProjects(true);
             return res.status(200).json({ projects });
         } catch(e) {
             const error = mapErrorMsgToResponse(e.message);
@@ -30,14 +30,16 @@ router.get('/:id/team', (req, res) => {
 });
 
 router.post('/add', (req, res) => {
-    const project = req.body;
-    try {
-        const newProject = addProject(project);
-        return res.status(200).json({ msg: 'Project Added successfully', project: newProject });
-    } catch(e) {
-        const error = mapErrorMsgToResponse(e.message);
-        return res.status(error.status).json({ msg: error.msg });
-    }
+    const {project} = req.body;
+    setTimeout(() => {
+        try {
+            const newProject = addProject(project);
+            return res.status(200).json({ msg: 'Project Added successfully', project: newProject });
+        } catch(e) {
+            const error = mapErrorMsgToResponse(e.message);
+            return res.status(error.status).json({ msg: error.msg });
+        }
+    }, 1000)
 });
 
 router.delete('/:id', (req, res) => {
@@ -72,30 +74,34 @@ router.post('/start', (req, res) => {
 
 router.post('/complete', (req, res) => {
     const { projectId, revenue } = req.body;
-    try {
-        const completedProject = completeProject(projectId, revenue);
-        return res.status(200).json({
-            msg: 'Project completed',
-            project: completedProject
-        });
-    } catch(e) {
-        const error = mapErrorMsgToResponse(e.message);
-        return res.status(error.status).json({ msg: error.msg });
-    }
+    setTimeout(() => {
+        try {
+            const completedProject = completeProject(projectId, revenue);
+            return res.status(200).json({
+                msg: 'Project completed',
+                project: completedProject
+            });
+        } catch(e) {
+            const error = mapErrorMsgToResponse(e.message);
+            return res.status(error.status).json({ msg: error.msg });
+        }
+    }, 1000)
 });
 
 router.post('/editTeam', (req, res) => {
     const { projectId, team } = req.body;
-    try {
-        const editedTeam = editProjectTeam(projectId, team);
-        return res.status(200).json({
-            msg: 'Project team edited successfully',
-            team: editedTeam
-        })
-    } catch(e) {
-        const error = mapErrorMsgToResponse(e.message);
-        return res.status(error.status).json({ msg: error.msg });
-    }
+    setTimeout(() => {
+        try {
+            const editedTeam = editProjectTeam(projectId, team);
+            return res.status(200).json({
+                msg: 'Project team edited successfully',
+                team: editedTeam
+            })
+        } catch(e) {
+            const error = mapErrorMsgToResponse(e.message);
+            return res.status(error.status).json({ msg: error.msg });
+        }
+    }, 1000)
 });
 
 module.exports = router;

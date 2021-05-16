@@ -1,4 +1,3 @@
-import { ChartData } from 'chart.js';
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getDashboardDataAction, resetDashboardAction } from '../../redux/actions/dashboard-actions/actions';
@@ -7,7 +6,6 @@ import DashboardCardContent from '../dashboard/DashboardCardContent'
 import DashboardRevenueChart from '../dashboard/DashboardRevenueChart';
 import DashboardStatusChart from '../dashboard/DashboardStatusChart';
 import Card from '../shared/Card';
-import Chart from '../shared/Chart';
 
 const Dashboard: React.FC = () => {
 
