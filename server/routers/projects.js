@@ -2,6 +2,8 @@ const router = require('express').Router();
 const { extractProjects, addProject, deleteProject, startProject, completeProject, editProjectTeam, getProjectTeam } = require('../services/projects');
 const { mapErrorMsgToResponse } = require('../services/shared');
 
+
+
 router.get('/all', (req, res) => {
     setTimeout(() => {
         try {

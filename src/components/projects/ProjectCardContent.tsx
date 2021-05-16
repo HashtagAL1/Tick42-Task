@@ -3,6 +3,8 @@ import { useDispatch } from 'react-redux';
 import { deleteProjectAction, setSelectedProject, startProjectAction } from '../../redux/actions/project-actions/actions';
 import { IProject } from '../../types/projectTypes';
 import Button from '../shared/Button';
+import { faTrashAlt } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 interface IProps {
     project: IProject,
@@ -77,19 +79,19 @@ const ProjectCardContent: React.FC<IProps> = ({ project, openTeamModal, onComple
 
         <div className="w-100 bottom-element pb-2">
             <div className="d-inline-block w-50 text-left pl-smaller">
-                <Button className="button-red pt-1 pb-1 button-rectangular font-size-normal font-color-default font-weight-bold" 
-                    title="Delete" 
+                <Button className="button-red w-30 pt-1 pb-1 button-rectangular font-size-normal font-color-default" 
+                    icon={<FontAwesomeIcon icon={faTrashAlt}/>} 
                     hide={project.status !== 'Completed'}
                     onClick={() => dispatch(deleteProjectAction(project.id))}
                 />
             </div>
             <div className="d-inline-block w-50 text-right pr-smaller">
-                <Button className="button-green pt-1 pb-1 button-rectangular font-size-normal font-color-default font-weight-bold"
+                <Button className="button-green w-100 pt-1 pb-1 button-rectangular font-size-normal font-color-default"
                     title="Start" 
                     hide={project.status !== 'On hold'}
                     onClick={() => dispatch(startProjectAction(project.id))}
                 />
-                <Button className="button-green pt-1 pb-1 button-rectangular font-size-normal font-color-default font-weight-bold" 
+                <Button className="button-green w-100 pt-1 pb-1 button-rectangular font-size-normal font-color-default" 
                     title="Complete" 
                     hide={project.status !== 'In Progress'} 
                     onClick={() => {

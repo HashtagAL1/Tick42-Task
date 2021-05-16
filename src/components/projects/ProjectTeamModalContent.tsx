@@ -55,7 +55,7 @@ const ProjectTeamModalContent: React.FC<IProps> = ({ onEdit }) => {
 
         {selectedProject?.status !== 'Completed' 
         ? <div className="w-100 pt-3 pb-1 text-right">
-            <Button className="w-30 pt-1 pb-1 button-green button-rectangular font-color-default font-weight-bold font-size-large"
+            <Button className="w-30 pt-1 pb-1 button-green button-rectangular font-color-default font-size-large"
                 title="Edit team" 
                 onClick={() => {
                     dispatch(editProjectTeamAction({ projectId: selectedProject?.id, team: teamMembers }));

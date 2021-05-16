@@ -1,6 +1,8 @@
 import React from 'react';
 import { IEmployee } from '../../types/employeeTypes';
 import Button from '../shared/Button';
+import { faTrashAlt } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 interface IProps {
     employees: IEmployee[],
@@ -26,9 +28,9 @@ const EmployeeModalList: React.FC<IProps> = ({ employees, isEditable, actionType
                 <div className="d-inline-block w-75">{e.name}</div>
 
                 {isEditable 
-                ?<div className="d-inline-block w-25">
-                    <Button className="w-100 pt-1 pb-1 button-red button-rectangular font-size-normal font-color-default font-weight-bold"
-                        title="remove"
+                ?<div className="d-inline-block w-25 text-center">
+                    <Button className="w-30 pt-1 pb-1 button-red button-rectangular font-size-normal font-color-default font-weight-bold"
+                        icon={<FontAwesomeIcon icon={faTrashAlt}/>}
                         onClick={() => dispatch({ type: actionType, payload: e })}
                     />
                 </div> 

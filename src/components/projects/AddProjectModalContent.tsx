@@ -87,7 +87,7 @@ const AddProjectModalContent: React.FC = () => {
             />
 
             <div className="w-100 pt-3 pb-1 text-right">
-                <Button className="w-30 pt-1 pb-1 button-green button-rectangular font-color-default font-weight-bold font-size-large"
+                <Button className="w-30 pt-1 pb-1 button-green button-rectangular font-color-default font-size-large"
                     title="Add" 
                     disabled={isFormInvalid()}
                     onClick={() => {

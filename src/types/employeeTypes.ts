@@ -3,5 +3,6 @@ export interface IEmployee {
     firstName: string,
     lastName: string,
     name: string,
-    value: string
+    value: string,
+    projects: string[]
 }

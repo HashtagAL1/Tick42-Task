@@ -1,3 +1,7 @@
+body {
+    font-family: 'Helvetica','Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
+}
+
 .h-10 {
     height: 10% !important;
 }
@@ -108,12 +112,21 @@
     padding-top: 1%;
 }
 
+.flex-direction-row {
+    flex-direction: row !important;
+}
+
 .flex-row-container {
     width: 100%;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
+}
+
+.flex-centered-content {
+    display: flex;
+    justify-content: center;
 }
 
 .card {
@@ -225,6 +238,10 @@
       cursor: pointer;
   }
 
+  .filter-box:not(.active) {
+      background: rgba(104, 104, 107, 0.5);
+  }
+
   .filter-box:hover:not(.active) {
       background: rgba(13,110,253,0.7);
   }
@@ -244,6 +261,14 @@
 
   .flex-15 {
       flex: 0 0 15%;
+  }
+
+  .flex-80 {
+      flex: 0 0 80%;
+  }
+
+  .flex-20 {
+      flex: 0 0 20%;
   }
 
   .text-right {
@@ -460,19 +485,24 @@
   }
 
   .button-green {
-      background: rgba(34,202,31,1);
+      background: rgba(32, 190, 29, 1);
+      color: white !important;
   }
 
-  .button-green:hover, .button-green:focus {
-      background: rgb(32, 179, 30);
+  .button-green:hover {
+      background: rgb(33, 173, 31);
   }
 
   .button-red {
-      background: rgba(240,26,26,1);
+      background: rgb(230, 33, 33);
   }
 
-  .button-red:hover, .button-red:focus {
+  .button-red:focus {
       background: rgb(185, 22, 22);
+  }
+
+  .button-red:hover {
+      background: rgb(219, 25, 25);
   }
 
   .button-round {
@@ -535,12 +565,14 @@
 
   .custom-input, .custom-select-search__input {
       outline: none;
-      border: none;
+      border: 1px solid rgba(137, 137, 143, 0.6);
       border-radius: 4px;
+      min-height: 35px;
   }
 
-  .custom-input:focus, .custom-select-search__input {
-      border-bottom: 1px solid rgba(13, 110, 253, 1);
+  .custom-input:focus, .custom-select-search__input:focus {
+    box-shadow: 0 0 5px rgb(31, 120, 145);
+    border: none;
   }
 
   .custom-select-search {
@@ -573,7 +605,7 @@
   }
 
   .custom-select-search__options li button:hover {
-      background: rgba(13,110,253,1);
+      background: rgba(13,110,253,0.7);
       color:rgba(255, 255, 255, 0.9);
       cursor: pointer;
   }
@@ -585,6 +617,19 @@
   .br-t-5 {
       border-top-left-radius: 5px;
       border-top-right-radius: 5px;
+  }
+
+  ::-webkit-scrollbar {
+    width: 5px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: rgba(139, 137, 137, 0.8);
+    border-radius: 10px;
   }
 
 @media screen and (max-width: 1050px) and (min-width: 870px) {

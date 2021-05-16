@@ -27,14 +27,14 @@ const extractProjects = (shouldAddEmployees) => {
     }
 };
 
-const getEmployeeActiveProjects = (employeeId) => {
-    const projects = extractProjects();
-    let result = projects.filter(p => p.employees.indexOf(employeeId) > -1 && p.status === 'In Progress');
+// const getEmployeeActiveProjects = (employeeId) => {
+//     const projects = extractProjects();
+//     let result = projects.filter(p => p.employees.indexOf(employeeId) > -1 && p.status === 'In Progress');
 
-    result = result.map(p > p.name);
+//     result = result.map(p => p.name);
     
-    return result;
-};
+//     return result;
+// };
 
 const addProject = (project) => {
     const projects = extractProjects(false);
@@ -168,7 +168,6 @@ module.exports = {
     completeProject,
     editProjectTeam,
     getProjectTeam,
-    getEmployeeActiveProjects,
     deleteProject,
     getDashboardInfo
 };

@@ -26,7 +26,7 @@ const CompleteProjectModalContent: React.FC<IProps> = ({ onConfirm }) => {
         />
 
         <div className="w-100 text-center pt-2 pb-1">
-            <Button className="w-30 pt-1 pb-1 button-green button-rectangular font-color-default font-weight-bold font-size-large" 
+            <Button className="w-30 pt-1 pb-1 button-green button-rectangular font-color-default font-size-large" 
                 title="Complete" 
                 disabled={!revenue}
                 onClick={() => {

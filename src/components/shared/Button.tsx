@@ -1,19 +1,21 @@
+import { FontawesomeObject } from '@fortawesome/fontawesome-svg-core';
 import React from 'react';
 
 interface IProps {
     className: string,
-    title: string,
+    title?: string,
     hide?: boolean,
     disabled?: boolean,
+    icon?: any,
     onClick: (event: React.MouseEvent<HTMLButtonElement>) => void
 }
 
-const Button: React.FC<IProps> = ({ className, title, hide, disabled, onClick }) => {
+const Button: React.FC<IProps> = ({ className, title, hide, disabled, icon, onClick }) => {
 
-    if(hide || !title) return null;
+    if(hide) return null;
 
     return <button className={`custom-button ${className}`} disabled={disabled || false} onClick={onClick}>
-        {title}
+        {icon ? <>{icon}</> : <>{title}</>}
     </button>
 };
 
