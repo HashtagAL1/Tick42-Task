@@ -11,7 +11,7 @@ const ProjectStatusFilter: React.FC = () => {
     return <div className="d-inline">
         {statuses.map((s, i) => {
             return <div key={s} onClick={() => dispatch(setSelectedProjectStatusAction(s))}
-                className={`filter-box bg-gray font-color-default d-inline-block text-center font-size-normal ${selectedStatus === s ? 'active' : ''}`}>
+                className={`filter-box pt-1 pb-1 bg-gray font-color-default d-inline-block text-center font-size-normal ${selectedStatus === s ? 'active' : ''}`}>
                     {s}
                 </div>
         })}

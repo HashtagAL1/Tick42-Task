@@ -270,7 +270,7 @@
   }
 
   .project-status-text {
-      width: 50%;
+      /* width: 50%; */
       text-align: center;
       border-radius: 8px;
       font-weight: bold;
@@ -440,7 +440,7 @@
   }
 
   .test {
-      border: 1px solid blue;
+      border: 1px solid blue !important;
   }
 
   .custom-button, .custom-button:focus {
@@ -538,9 +538,9 @@
         font-size: 0.75rem;
     }
 
-    .project-status-text {
+    /* .project-status-text {
         width: 65%;
-    }
+    } */
 
     .list-card-min-height {
         min-height: 45vh;
@@ -565,9 +565,9 @@
         font-size: 0.65rem;
     }
 
-    .project-status-text {
+    /* .project-status-text {
         width: 90%;
-    }
+    } */
 
     .list-card-min-height {
         min-height: 35vh;

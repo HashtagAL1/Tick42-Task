@@ -29,7 +29,7 @@ const ProjectList: React.FC = () => {
             </div>
 
             <div className="flex-15 text-right">
-                <Button className="w-75 button-green button-rectangular font-color-default font-weight-bold font-size-large" 
+                <Button className="w-75 pt-1 pb-1 button-green button-rectangular font-color-default font-weight-bold font-size-large" 
                     title="Create"
                     onClick={() => setIsModalOpen(true)}
                 />
