@@ -46,6 +46,10 @@ body {
     width: 10% !important;
 }
 
+.w-15 {
+    width: 15% !important;
+}
+
 .w-20 {
     width: 20% !important;
 }
@@ -484,6 +488,14 @@ body {
       cursor: pointer;
   }
 
+  .button-blue {
+      background: rgba(13,110,253,1);
+  }
+
+  .button-blue:hover {
+      background: rgb(16, 98, 221);
+  }
+
   .button-green {
       background: rgba(32, 190, 29, 1);
       color: white !important;
@@ -545,10 +557,12 @@ body {
     border-radius: 10px;
     background: white;
     overflow-x: hidden;
+    padding-bottom: 2%;
   }
 
   .modal-content-small {
       width: 25%;
+      padding-bottom: 1%;
   }
   
   .modal-header {

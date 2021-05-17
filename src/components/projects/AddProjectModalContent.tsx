@@ -3,13 +3,13 @@ import { useDispatch } from 'react-redux';
 import { IProject } from '../../types/projectTypes';
 import Input from '../shared/Input';
 import Button from '../shared/Button';
-import EmployeeModalList from '../employees/EmployeeModalList';
 import { addProjectAction } from '../../redux/actions/project-actions/actions';
 import EmployeeSearchSelect from '../employees/EmployeesSearchSelect';
+import ModalList from '../shared/ModalList';
 
 const initState: IProject = {
     name: '',
-    expectedRevenue: undefined,
+    expectedRevenue: 0,
     employees: [],
     revenue: null,
     status: '',
@@ -80,7 +80,9 @@ const AddProjectModalContent: React.FC = () => {
                 outerDispatch={localDispatch}
             />
             
-            <EmployeeModalList employees={formData.employees}
+            <ModalList collection={formData.employees}
+                noDataText="No team members"
+                title="Team members"
                 dispatch={localDispatch}
                 isEditable={true}
                 actionType="REMOVE_EMPLOYEE"

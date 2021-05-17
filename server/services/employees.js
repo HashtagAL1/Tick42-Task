@@ -32,7 +32,8 @@ const addEmployee = (employee) => {
     } else {
         const newEmployee = {...employee, 
             name: `${employee.firstName} ${employee.lastName}`, 
-            id: shortid.generate()
+            id: shortid.generate(),
+            projects: []
         };
 
         employees.push(newEmployee);
@@ -48,7 +49,8 @@ const editEmployee = (newEmployee) => {
     if(targetEmployeeIndex < 0) {
         throw new Error('NOT_FOUND_EMPL')
     } else {
-        employees[targetEmployeeIndex] = {...employees[targetEmployeeIndex], ...newEmployee};
+        let name = `${newEmployee.firstName} ${newEmployee.lastName}`;
+        employees[targetEmployeeIndex] = {...employees[targetEmployeeIndex], ...newEmployee, value: name, name};
         setDbCollection('employees', employees);
         return employees[targetEmployeeIndex];
     }

@@ -13,7 +13,7 @@ interface IProps {
 const CompleteProjectModalContent: React.FC<IProps> = ({ onConfirm }) => {
     const dispatch = useDispatch();
     const selectedProject = useSelector<IRootState, IProject | null>(state => state.projects.selectedProject);
-    const [revenue, setRevenue] = useState<number | undefined>(undefined);
+    const [revenue, setRevenue] = useState<number | undefined>(0);
 
     return <div>
         <label htmlFor="revenue">Earned revenue:</label>

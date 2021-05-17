@@ -33,5 +33,6 @@ export interface IDashboardReducerState {
 };
 
 export interface IEmployeesReducerState {
-    employees: IEmployee[]
+    employees: IEmployee[],
+    selectedEmployee: IEmployee | null
 }

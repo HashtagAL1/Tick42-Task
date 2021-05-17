@@ -4,9 +4,9 @@ import { editProjectTeamAction } from '../../redux/actions/project-actions/actio
 import { IEmployee } from '../../types/employeeTypes';
 import { IProject } from '../../types/projectTypes';
 import { IRootState } from '../../types/reducerTypes';
-import EmployeeModalList from '../employees/EmployeeModalList';
 import EmployeeSearchSelect from '../employees/EmployeesSearchSelect';
 import Button from '../shared/Button';
+import ModalList from '../shared/ModalList';
 
 interface IProps {
     onEdit: () => void
@@ -47,7 +47,9 @@ const ProjectTeamModalContent: React.FC<IProps> = ({ onEdit }) => {
             outerDispatch={localDispatch}
         />
 
-        <EmployeeModalList employees={teamMembers} 
+        <ModalList collection={teamMembers}
+            noDataText="No team members"
+            title="Team members" 
             actionType="REMOVE_EMPLOYEE" 
             isEditable={selectedProject?.status !== 'Completed'}
             dispatch={localDispatch}

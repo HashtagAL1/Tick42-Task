@@ -1,37 +1,41 @@
 import React from 'react';
-import { IEmployee } from '../../types/employeeTypes';
-import Button from '../shared/Button';
+import Button from './Button';
 import { faTrashAlt } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { IEmployee } from '../../types/employeeTypes';
 
 interface IProps {
-    employees: IEmployee[],
+    collection: IEmployee[] | any,
     isEditable?: boolean,
+    noDataText: string,
+    title: string,
     dispatch?: any,
     actionType?: string
 }
 
-const EmployeeModalList: React.FC<IProps> = ({ employees, isEditable, actionType, dispatch }) => {
+const ModalList: React.FC<IProps> = ({ collection, isEditable, noDataText, title, actionType, dispatch }) => {
 
     return <div className="w-100 pt-2">
         <div className="w-100 font-size-heading font-weight-bold font-color-gray text-center">
-            Team members
+            {title}
         </div>
 
-        {employees.length === 0 
-        ? <div className="w-100 font-color-gray font-size-small text-center">No team members</div>
+        {collection.length === 0 
+        ? <div className="w-100 font-color-gray font-size-small text-center">{noDataText}</div>
         : null
         }
 
-        {employees.map((e) => {
-            return <div className="w-100 pt-2 pb-2 employee-list-modal-item" key={e.id}>
-                <div className="d-inline-block w-75">{e.name}</div>
+        {collection.map((item: IEmployee | any) => {
+            return <div className="w-100 pt-2 pb-2 employee-list-modal-item" key={item.id ? item.id : item}>
+                <div className="d-inline-block w-75">
+                    {item.name ? item.name : item}
+                </div>
 
                 {isEditable 
                 ?<div className="d-inline-block w-25 text-center">
                     <Button className="w-30 pt-1 pb-1 button-red button-rectangular font-size-normal font-color-default font-weight-bold"
                         icon={<FontAwesomeIcon icon={faTrashAlt}/>}
-                        onClick={() => dispatch({ type: actionType, payload: e })}
+                        onClick={() => dispatch({ type: actionType, payload: item })}
                     />
                 </div> 
                 : null}
@@ -40,4 +44,4 @@ const EmployeeModalList: React.FC<IProps> = ({ employees, isEditable, actionType
     </div>
 };
 
-export default EmployeeModalList;
+export default ModalList;

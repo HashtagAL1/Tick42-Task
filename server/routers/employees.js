@@ -32,10 +32,10 @@ router.get('/all', (req, res) => {
 });
 
 router.post('/add', (req, res) => {
-    const emp = req.body;
+    const { employee } = req.body;
 
     try {
-        const newEmployee = addEmployee(emp);
+        const newEmployee = addEmployee(employee);
         return res.status(200).json({
             msg: 'Employee added successfully',
             employee: newEmployee
@@ -47,13 +47,13 @@ router.post('/add', (req, res) => {
 });
 
 router.post('/edit', (req, res) => {
-    const newEmployee = req.body;
+    const { employee } = req.body;
 
     try {
-        const editedEmployee = editEmployee(newEmployee);
+        const editedEmployee = editEmployee(employee);
         return res.status(200).json({
             msg: 'Employee edited successfully',
-            employee: editEmployee
+            employee: editedEmployee
         })
     } catch(e) {
         const error = mapErrorMsgToResponse(e.message);
@@ -67,7 +67,8 @@ router.delete('/:id', (req, res) => {
     try {
         deleteEmployee(employeeId);
         return res.status(200).json({
-            msg: 'Employee deleted successfully'
+            msg: 'Employee deleted successfully',
+            employeeId
         })
     } catch(e) {
         const error = mapErrorMsgToResponse(e.message);
