@@ -39,7 +39,8 @@ module.exports = {
             {
                 test: /\.(png|jpg|gif|svg|eot|ttf|woff|woff2)$/,
                 use: ["url-loader"]
-            }
+            },
+            { test: /\.tsx?$/, exclude: /\.test.tsx?$/, include: /src/, use: 'awesome-typescript-loader?silent=true' }
         ]
     },
     plugins: [

@@ -14,7 +14,7 @@ const Button: React.FC<IProps> = ({ className, title, hide, disabled, icon, onCl
 
     if(hide) return null;
 
-    return <button className={`custom-button ${className}`} disabled={disabled || false} onClick={onClick}>
+    return <button data-test="custom-button" className={`custom-button ${className}`} disabled={disabled} onClick={onClick}>
         {icon ? <>{icon}</> : <>{title}</>}
     </button>
 };
