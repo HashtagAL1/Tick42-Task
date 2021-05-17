@@ -11,6 +11,7 @@ interface IProps {
 
 const Input: React.FC<IProps> = ({ type, className, placeholder, id, value, onChange }) => {
     return <input type={type} 
+        id={id}
         className={`custom-input ${className}`} 
         placeholder={placeholder} 
         value={value} 
