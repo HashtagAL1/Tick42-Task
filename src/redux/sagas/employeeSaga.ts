@@ -21,7 +21,7 @@ export function* employeeSaga() {
 
 export function* getEmployees() {
     try {
-        yield setLoading(true);
+        yield put(setLoading(true));
         const response: AxiosResponse = yield call(fetchEmployees);
         let { employees } = response.data;
         employees = employees.map((emp: IEmployee) => {

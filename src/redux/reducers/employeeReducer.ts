@@ -28,6 +28,10 @@ export const employeeReducer = (state = initState, action: any): IEmployeesReduc
                 ...state,
                 selectedEmployee: action.payload
             }
+        case EmployeeActionTypes.RESET_EMPLOYEES:
+            return {
+                ...initState
+            }
         default: return state;
     }
 };
